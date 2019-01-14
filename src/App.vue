@@ -1,22 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <ion-app>
+            <router-view></router-view>
+        </ion-app>
+        <ion-menu-controller></ion-menu-controller>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import OptionsMenu from './components/OptionsMenu.vue';
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+    created() {
+        console.log("IONIC", this.$ionic)
+        console.log("User", this.$user)
+    },
+    components: { 
+        'OptionsMenu' : OptionsMenu,
+    },
 }
 </script>
 
 <style>
+:root {
+    --ion-color-primary: #cab645;
+    --ion-color-secondary: #3d3c2e;
+    --ion-color-danger: #f53d3d;
+    --ion-color-light: #e74c3c;
+    --ion-color-dark: #222222;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

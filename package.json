@@ -5,10 +5,23 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "android": "npm run build && npx cap copy && npx cap open android",
+    "ios": "npm run build && npx cap copy && npx cap open ios"
   },
   "dependencies": {
-    "vue": "^2.5.21"
+    "@capacitor/android": "^1.0.0-beta.13",
+    "@capacitor/cli": "^1.0.0-beta.13",
+    "@capacitor/core": "^1.0.0-beta.13",
+    "@capacitor/ios": "^1.0.0-beta.13",
+    "@ionic/core": "^4.0.0-rc.1",
+    "@ionic/vue": "0.0.1",
+    "@modus/ionic-vue": "^1.1.1",
+    "axios": "^0.18.0",
+    "firebase": "^5.7.3",
+    "vue": "^2.5.21",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",

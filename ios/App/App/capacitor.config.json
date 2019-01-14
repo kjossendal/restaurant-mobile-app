@@ -1,0 +1,6 @@
+{
+  "appId": "com.jossendal",
+  "appName": "cap-restaurant",
+  "bundledWebRuntime": false,
+  "webDir": "dist"
+}
