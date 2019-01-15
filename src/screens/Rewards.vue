@@ -1,10 +1,9 @@
 <template>
-    <div class="screen-container">
-        <HeaderTabs title="Rewards" />
-        <ion-text>
-            <h3 class="text">Rewards</h3>
+    <ion-content fullscreen text-center>
+        <ion-text color="primary">
+            <h3>Rewards</h3>        
         </ion-text>
-    </div>
+    </ion-content>
 </template>
 <script>
 import HeaderTabs from '../components/HeaderTabs.vue'
@@ -22,12 +21,7 @@ export default {
 }
 </script>
 <style scoped>
-.screen-container {
-    flex: 1;
-    height: 100%;
-    background-color: var(--ion-color-dark);
-}
-.text {
-    color: var(--ion-color-primary);
+ion-content {
+    --ion-background-color: var(--ion-color-dark);
 }
 </style>

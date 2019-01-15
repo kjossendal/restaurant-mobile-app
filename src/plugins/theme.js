@@ -1,18 +1,20 @@
+import store from '../store/index.js'
+
 export default {
     install(Vue) {
         Vue.mixin({
             computed: {
-                $theme() {
-                    return {
-                        primary: '#cab645',
-                        secondary: '#3d3c2e',
-                        danger: '#f53d3d',
-                        light: '#e74c3c',
-                        dark: '#222222'
+                "$theme"() {
+                    var theme = store.getters['theme/theme'];
+                    user.setTheme = function(setTheme) {
+                        return store.dispatch('theme/setTheme', setTheme)
                     }
-                },
+                    return theme
+                }
             }
-        })
+        });
     }
 }
+
+
     

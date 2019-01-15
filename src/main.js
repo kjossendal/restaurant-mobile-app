@@ -10,6 +10,7 @@ import store  from './store/index.js';
 import Toast  from './plugins/toast';
 import Theme  from './plugins/theme';
 import User   from './plugins/user';
+import Cart   from './plugins/cart';
 
 Vue.config.ignoredElements = [/^ion-/]
 Vue.config.productionTip = false;
@@ -29,6 +30,7 @@ Vue.use(Ionic);
 Vue.use(Toast);
 Vue.use(Theme);
 Vue.use(User);
+Vue.use(Cart);
 
 let app = '';
 firebase.auth().onAuthStateChanged(() => {

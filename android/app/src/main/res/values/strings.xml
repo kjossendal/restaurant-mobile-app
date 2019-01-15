@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">cap-restaurant</string>
+    <string name="app_name">Chicken</string>
     <string name="title_activity_main">cap-restaurant</string>
     <string name="package_name">com.jossendal</string>
     <string name="fileprovider_authority">com.jossendal.fileprovider</string>

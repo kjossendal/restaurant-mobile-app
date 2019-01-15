@@ -7,7 +7,9 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <link rel="stylesheet" href="https://unpkg.com/@ionic/core@latest/css/ionic.bundle.css" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
+    <!-- link to the custom styles for SqPaymentForm -->
+    <!-- <link rel="stylesheet" type="text/css" href="../src/square/sqpaymentform-basic.css" /> -->
     <title>capacitor-restaurant</title>
   </head>
   <body>
@@ -16,5 +18,12 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <!-- link to the SqPaymentForm library -->
+    <script async type="text/javascript" src="https://js.squareup.com/v2/paymentform"> </script>
+
+    <!-- link to the local SqPaymentForm initialization -->
+    <!-- <script type="text/javascript" src="../src/square/sqpaymentform-basic.js"> </script> -->
+
+
   </body>
 </html>

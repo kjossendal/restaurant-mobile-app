@@ -1,16 +1,5 @@
 <template>
     <div class="screen-container">
-    <ion-menu side="end" id="menu">
-        <ion-header>
-            <ion-toolbar>
-                <ion-title>Hola</ion-title>
-            </ion-toolbar>
-        </ion-header>
-
-        <ion-content padding>
-            hola macho
-        </ion-content>
-    </ion-menu>
     <ion-content>
             <ion-button @click="alert">Trigger Alert</ion-button>
             <ion-button @click="loading">Trigger Loading</ion-button>

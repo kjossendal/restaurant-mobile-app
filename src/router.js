@@ -5,7 +5,8 @@ import Login     from './screens/Login.vue';
 import Register  from './screens/Register.vue';
 import Menu      from './screens/Menu.vue';
 import Tabs      from './screens/Tabs.vue';
-import Modal     from './components/Modal.vue';
+import Cart      from './screens/Cart.vue';
+import Checkout  from './screens/Checkout.vue';
 
 import firebase from 'firebase';
 
@@ -20,16 +21,6 @@ const router = new Router({
         name: 'tabs',
         component: Tabs, 
         meta: { requiresAuth: true},
-        children: [
-            {
-                path: 'home',
-                component: Home
-            },
-            {
-                path: 'menu',
-                component: Menu
-            }
-        ]
     },
     { path: '/home', name: 'home', component: Home, meta: { requiresAuth: true } },
     { path: '/login', name: 'login', component: Login
@@ -41,7 +32,8 @@ const router = new Router({
     },
     { path: '/register', name: 'register', component: Register },
     { path: '/menu', name: 'menu', component: Menu, meta: { requiresAuth: true } },
-    { path: '/modal', name: 'modal', component: Modal },
+    { path: '/cart', name: 'cart', component: Cart },
+    { path: '/checkout', name: 'checkout', component: Checkout }
   ],
 });
 
@@ -49,7 +41,7 @@ router.beforeEach((to, from, next) => {
     const currentUser = firebase.auth().currentUser;
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
     if (!currentUser && requiresAuth) next('login')
-    else if (currentUser && !requiresAuth) next('tabs')
+    // else if (currentUser && !requiresAuth) next('tabs')
     else next()
 });
 

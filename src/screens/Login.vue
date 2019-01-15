@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         login() {
-          // man is this ugly
+          // man is this ugly but saving the created loader as a promise did not appear to be working
             this.$ionic.loadingController.create({
                 keyboardClose: true,
                 showBackdrop: false,

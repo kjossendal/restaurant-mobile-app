@@ -1,11 +1,9 @@
-# capacitor-restaurant
+# Restaurant app built with Vue.js, Ionic 4(beta), and wrapped by Capacitor
 
 ## Project setup
-```
-npm install
-```
+<p>Requires proper Android Studio and Xcode configuration</p>
 
-### Compiles and hot-reloads for development
+### Run in browser
 ```
 npm run serve
 ```
@@ -15,15 +13,17 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### Build, Build android, and open Android Studio to launch emulator
 ```
-npm run test
+npm run android
 ```
 
-### Lints and fixes files
+### Build, Build Ios, and open Xcode to launch emulator
 ```
-npm run lint
+npm run ios
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Vue Cli](https://cli.vuejs.org/config/).
+See [Capacitor API](https://capacitor.ionicframework.com/docs/apis/)
+See [Ionic 4 API](https://beta.ionicframework.com/docs/api/)
