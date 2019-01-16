@@ -1,13 +1,13 @@
 <template>
-    <div class="screen-container">
+    <ion-content>
         <ion-grid>
-            <ion-row justify-content-center>
-                <img src="../assets/chicken_logo.png" alt="logo" />
+            <ion-row justify-content-center style="padding:10px;">
+                <img src="../assets/sfr-hero-logo.png" alt="logo" />
             </ion-row>
         </ion-grid>
-        <ion-text text-center>
+        <!-- <ion-text text-center>
             <h2 class="title">Chicken D'élégance</h2>
-        </ion-text>
+        </ion-text> -->
         <ion-grid>
             <ion-row justify-content-center>
                 <ion-col>
@@ -22,10 +22,10 @@
             </ion-row>
         </ion-grid>
         <div text-center>
-            <ion-button class="button" expand="block" @click="login">Login</ion-button>
-            <ion-button class="button" expand="block" @click="register">Sign Up</ion-button>
+            <ion-button color="light" class="button" expand="block" @click="login">Login</ion-button>
+            <ion-button color="light" class="button" expand="block" @click="register">Sign Up</ion-button>
         </div>
-    </div>
+    </ion-content>
 </template>
 <script>
 import firebase from 'firebase';
@@ -78,9 +78,8 @@ export default {
 }
 </script>
 <style scoped>
-.screen-container {
-    background-color: var(--ion-color-dark);
-    flex: 1;
+ion-content {
+    --ion-background-color: var(--ion-color-primary);
 }
 .button {
     margin: 0 auto;
@@ -88,12 +87,12 @@ export default {
     width: 50%;
 }
 .title {
-    color: var(--ion-color-primary)
+    color: var(--ion-color-primary);
 }
 .input-field {
     width: 80%;
     margin: 0 auto;
-    border: 1px solid var(--ion-color-primary);
+    border: 1px solid var(--ion-color-dark);
     border-radius: 10px;
     margin-bottom: 10px;
     color: white;
@@ -101,6 +100,6 @@ export default {
 .spinner {
     /* not working */
     padding: 49px;
-    color: var(--ion-color-primary)
+    color: var(--ion-color-primary);
 }
 </style>

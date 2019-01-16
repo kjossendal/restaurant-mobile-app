@@ -32,7 +32,7 @@
                     </div>
                 </form>
             </div>
-            <ion-button @click="requestCardNonce( $event)" class='productPurchase payButton'>Pay</ion-button>
+            <ion-button color="dark" @click="requestCardNonce( $event)" class='productPurchase payButton'>Pay</ion-button>
         </ion-content>
     </div>
 </template>
@@ -180,12 +180,8 @@ export default {
 };
 </script>
 <style scoped>
-.screen-container {
-    background-color: var(--ion-color-dark);
-    flex: 1;
-}
 ion-content {
-    --ion-background-color: var(--ion-color-dark);
+    --ion-background-color: var(--ion-color-primary);
 }
 /* square stylings */
 .sq-input {

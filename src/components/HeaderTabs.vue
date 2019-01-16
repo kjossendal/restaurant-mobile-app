@@ -10,7 +10,7 @@
                 </ion-button>
             </ion-buttons>
             <ion-buttons slot="secondary">
-                <ion-button>
+                <ion-button @click="openUserPopover">
                     <ion-icon slot="icon-only" name="contact"></ion-icon>
                 </ion-button>
                 <ion-button @click="search">
@@ -20,7 +20,7 @@
                 </ion-button>
             </ion-buttons>
             <ion-buttons slot="primary">
-                <ion-button @click="openActionsheet" color="primary">
+                <ion-button @click="openBottomActionsheet" color="primary">
                     <ion-icon slot="icon-only" name="more"></ion-icon>
                 </ion-button>
             </ion-buttons>
@@ -28,15 +28,23 @@
     </ion-header>
 </template>
 <script>
+import UserSettings from './UserSettings.vue';
+
 import firebase from 'firebase';
 
 export default {
     components: {
+        'UserSettings' : UserSettings,
     },
     props: {
         title: {
             type: String,
             required: true,
+        }
+    },
+    data() {
+        return {
+            popoverOpen: false,
         }
     },
     methods: {
@@ -46,7 +54,21 @@ export default {
             firebase.auth().signOut().then(() => this.$router.replace('/login'))
         },
         search() {},
-        openActionsheet() {
+        openUserPopover() {
+            if(!this.popoverOpen) {
+                this.$ionic.popoverController.create({
+                    header: this.$user.email,
+                    component: UserSettings,
+                    componentProps: {},
+                    backdropDismiss: true,
+                    keyboardClose: true,
+                }).then(p => {
+                    this.popoverOpen = true;
+                    p.present()
+                })
+            }
+        },
+        openBottomActionsheet() {
             this.$ionic.actionSheetController.create({
                 header: "Options",
                 buttons: [{
@@ -69,6 +91,12 @@ export default {
                         console.log('settings clicked');
                     }
                     }, {
+                    text: 'About', 
+                    icon: 'information-circle-outline',
+                    handler: () => {
+                        console.log('about clicked')
+                    }
+                    }, {
                     text: 'Cancel',
                     icon: 'close',
                     role: 'cancel',
@@ -83,3 +111,16 @@ export default {
     },
 }
 </script>
+<style scoped>
+/* these stylings are related to the popover and are very unintuitive */
+ion-modal {
+    max-width: 80%;
+    width: auto;
+    max-height: 45%;
+    margin-top: 56px; /* fetch this programmatically */
+    left: 80px;
+}
+.inner-scroll {
+    left: auto;
+}
+</style>

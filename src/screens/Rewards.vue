@@ -1,6 +1,6 @@
 <template>
-    <ion-content fullscreen text-center>
-        <ion-text color="primary">
+    <ion-content text-center>
+        <ion-text color="dark">
             <h3>Rewards</h3>        
         </ion-text>
     </ion-content>
@@ -22,6 +22,6 @@ export default {
 </script>
 <style scoped>
 ion-content {
-    --ion-background-color: var(--ion-color-dark);
+    --background: url('../assets/hero-bg-02-min.jpg') no-repeat center center / cover;
 }
 </style>

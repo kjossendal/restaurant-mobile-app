@@ -23,10 +23,10 @@ export default {
 
 <style>
 :root {
-    --ion-color-primary: #cab645;
+    --ion-color-primary: #cf1e3a;
     --ion-color-secondary: #3d3c2e;
     --ion-color-danger: #f53d3d;
-    --ion-color-light: #e74c3c;
+    --ion-color-light: #fff6ed;
     --ion-color-dark: #222222;
 }
 

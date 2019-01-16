@@ -1,13 +1,13 @@
 <template>
-    <div class="screen-container">
+    <ion-content>
         <ion-grid>
-            <ion-row justify-content-center>
-                <img class="logo" src="../assets/chicken_logo.png" alt="logo" />
+            <ion-row justify-content-center style="padding:10px;">
+                <img src="../assets/sfr-hero-logo.png" alt="logo" />
             </ion-row>
         </ion-grid>
-        <ion-text text-center>
+        <!-- <ion-text text-center>
             <h2 class="title">Sign up is easy!</h2>
-        </ion-text>
+        </ion-text> -->
         <ion-grid>
             <ion-row justify-content-center>
                 <ion-col>
@@ -22,13 +22,12 @@
             </ion-row>
         </ion-grid>
         <div text-center>
-            <ion-button class="button" expand="block" @click="register">Register</ion-button>
-            <ion-button class="button" expand="block" @click="$router.go(-1)">Back</ion-button>
+            <ion-button color="light" class="button" expand="block" @click="register">Register</ion-button>
+            <ion-button color="light" class="button" expand="block" @click="$router.go(-1)">Back</ion-button>
         </div>
-    </div>
+    </ion-content>
 </template>
 <script>
-import axios from 'axios';
 import firebase from 'firebase';
 
 export default {
@@ -38,31 +37,47 @@ export default {
         password: '',
     }
   },
-  methods: {
-      register() {
-          //register then login new user
-          firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-            .then(
-                (user) => {
-                    this.$router.push('/home')
-                    alert('Account Created')
-                }, 
-                (err) => {
-                    alert('Sorry ' + err.message)
-                }
-            )
-      }
-  },
+    methods: {
+        register() {
+            //register then login new user
+            this.$ionic.loadingController.create({
+                keyboardClose: true,
+                showBackdrop: false,
+                message: 'Please Wait...',
+                cssClass: 'spinner'
+            })
+            .then(loader => {
+                loader.present()
+                firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+                    .then(
+                        (user) => {
+                            loader.dismiss()
+                            this.$user.setEmail(this.email)
+                            this.$router.push('/home')
+                        }, 
+                        (err) => {
+                            loader.dismiss()
+                            this.alert(err.message)                        }
+                    )
+            })
+        },
+        alert(message) {
+            // make this a plugin
+            this.$ionic.alertController.create({
+                header: 'Error',
+                message: message,
+                buttons: ['OK'],
+            })
+            .then(a => a.present())
+        },
+    },
   created() {
   }
 }
 </script>
 <style scoped>
-.screen-container {
-    background-color: var(--ion-color-dark);
-    flex: 1;
-}
-.logo {
+ion-content {
+    --ion-background-color: var(--ion-color-primary);
 }
 .button {
     margin: 0 auto;
@@ -76,7 +91,7 @@ export default {
 .input-field {
     width: 80%;
     margin: 0 auto;
-    border: 1px solid var(--ion-color-primary);
+    border: 1px solid var(--ion-color-dark);
     border-radius: 10px;
     margin-bottom: 10px;
     color: white;
