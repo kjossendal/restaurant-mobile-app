@@ -1,14 +1,18 @@
 <template>
     <div>
-        <ion-header>
+        <!-- <ion-header>
             <ion-toolbar color="secondary">
                 <ion-buttons slot="start">
                     <ion-back-button @click="close" default-href="/home" />
                 </ion-buttons>
                 <ion-title>Menu Item</ion-title>
             </ion-toolbar>
-        </ion-header>
-        <ion-content fullscreen text-center>
+        </ion-header> -->
+        <ion-content text-center>
+            <div class="inner-background">
+            <ion-buttons slot="start">
+                <ion-back-button @click="close" default-href="/home" />
+            </ion-buttons>
             <ion-grid>
                 <ion-row justify-content-center>
                     <img src="../assets/stir.jpg" alt="logo" />
@@ -17,7 +21,7 @@
                     <ion-col>
                         <h3 class="color">{{ item.name }}</h3>
                         <p class="color">{{ item.price }}</p>
-                        <ion-button color="dark" @click="addToCart">Add</ion-button>
+                        <ion-button color="primary" @click="addToCart">Add</ion-button>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -45,6 +49,7 @@
                     <ion-text color="dark">+ {{ item }} $9.99</ion-text>
                 </ion-item>
             </ion-list>
+            </div>
         </ion-content>
     </div>
 </template>
@@ -95,10 +100,15 @@ export default {
 </script>
 <style scoped>
 ion-content {
-    --ion-background-color: var(--ion-color-primary);
-}
+    --background: url('../assets/contact-bg-01.jpg') no-repeat center center / cover;}
 ion-select {
     color: var(--ion-color-dark);
+}
+.inner-background {
+    background: url('../assets/food-background-01.png') no-repeat center center / cover;
+    min-height: 95%;
+    margin: 15px;
+    padding: 10px;
 }
 .color {
     color: var(--ion-color-dark);

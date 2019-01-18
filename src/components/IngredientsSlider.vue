@@ -1,8 +1,6 @@
 <template>
     <ion-slides pager="true">
-
         <ion-slide>
-
             <VegSlide />
         </ion-slide>
 
@@ -33,6 +31,12 @@ export default {
         'SauceSlide' : SauceSlide,
         'VegSlide' : VegSlide,
     },
+    props: {
+        startslide: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
 
@@ -40,10 +44,12 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            document.querySelector('ion-slides').stopAutoplay()
-            document.querySelector('ion-slides').options = {
+            const slide = document.querySelector('ion-slides')
+            slide.slideTo(this.startslide)
+            slide.stopAutoplay();
+            slide.options = {
             }
-        }, 1000)
+        }, 200)
     },
     methods: {
         close() {

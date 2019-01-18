@@ -2,7 +2,7 @@
     <ion-tabs color="secondary">
 
         <ion-tab label="Home" tab="home" icon="home">
-            <HeaderTabs :title="$user.email"/>
+            <HeaderTabs :title="$user.first_name || 'Home'"/>
             <ion-content fullscreen>
                 <Home />
             </ion-content>
@@ -22,10 +22,10 @@
             </ion-content>
         </ion-tab>
 
-        <ion-tab label="Test" tab="test" icon="add">
-            <HeaderTabs title="Test"/>
+        <ion-tab label="Dashboard" tab="dashboard" icon="reorder">
+            <HeaderTabs title="Dashboard"/>
             <ion-content fullscreen>
-                <Test />
+                <Dashboard />
             </ion-content>
         </ion-tab>
 
@@ -34,16 +34,19 @@
 <script>
 // TODO make these components, not screens
 import HeaderTabs from '../components/HeaderTabs.vue'
-import Test       from '../components/Test.vue'
-import Rewards    from './Rewards.vue'
+// import Test       from '../components/Test.vue'
+
+import Dashboard  from './Dashboard.vue'
+import Rewards    from './RewardsTab.vue'
 import Home       from './Home.vue'
-import Menu       from './Menu.vue'
+import Menu       from './MenuTab.vue'
 
 export default {
     components: {
         'HeaderTabs' : HeaderTabs,
+        'Dashboard' : Dashboard,
         'Rewards' : Rewards,
-        'Test' : Test,
+        // 'Test' : Test,
         'Home' : Home,
         'Menu' : Menu
     },

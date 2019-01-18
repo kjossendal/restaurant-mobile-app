@@ -2,14 +2,15 @@
     <ion-header class="header">
         <ion-toolbar color="secondary">
             <ion-title>{{ title }}</ion-title>
-            <!-- some cheese right here -->
-            <ion-buttons slot="start" v-if="['/cart', '/checkout'].includes($route.path)">
+            <!-- some cheese right here, full path is not available when header is used in a modal -->
+            <ion-buttons slot="start" v-if="['/cart', '/checkout', '/dashboard'].includes($route.fullPath)">
+            <!-- <ion-buttons slot="start"> -->
                 <ion-back-button></ion-back-button>
                 <ion-button @click="$router.go(-1)">
                     <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
                 </ion-button>
             </ion-buttons>
-            <ion-buttons slot="secondary">
+            <!-- <ion-buttons slot="secondary">
                 <ion-button @click="openUserPopover">
                     <ion-icon slot="icon-only" name="contact"></ion-icon>
                 </ion-button>
@@ -18,10 +19,11 @@
                         <ion-icon slot="icon-only" name="search"></ion-icon>
                     </ion-button>
                 </ion-button>
-            </ion-buttons>
+            </ion-buttons> -->
             <ion-buttons slot="primary">
-                <ion-button @click="openBottomActionsheet" color="primary">
-                    <ion-icon slot="icon-only" name="more"></ion-icon>
+                <ion-button @click="openBottomActionsheet" color="primary" style="background-color: white; border-radius: 50%; font-size: 22px;">
+                    <!-- <ion-icon slot="icon-only" name="more"></ion-icon> -->
+                    <font-awesome-icon  icon="user-ninja" />
                 </ion-button>
             </ion-buttons>
         </ion-toolbar>
@@ -29,8 +31,6 @@
 </template>
 <script>
 import UserSettings from './UserSettings.vue';
-
-import firebase from 'firebase';
 
 export default {
     components: {
@@ -50,8 +50,9 @@ export default {
     methods: {
         logout() {
             // clear vuex store, could also clear cart but may want that to persist in a mobile environment
-            this.$user.setEmail('')
-            firebase.auth().signOut().then(() => this.$router.replace('/login'))
+            this.$auth.logout().then(() => {
+                this.$router.replace('/login')
+            })
         },
         search() {},
         openUserPopover() {
@@ -91,10 +92,16 @@ export default {
                         console.log('settings clicked');
                     }
                     }, {
-                    text: 'About', 
+                    text: 'Dashboard',
+                    icon: 'reorder',
+                    handler: () => {
+                        this.$router.push('/dashboard')
+                    }
+                    }, {
+                    text: 'Profile', 
                     icon: 'information-circle-outline',
                     handler: () => {
-                        console.log('about clicked')
+                        console.log('profile clicked')
                     }
                     }, {
                     text: 'Cancel',

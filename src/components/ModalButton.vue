@@ -11,17 +11,12 @@ export default {
         item: {
             type: Object,
             required: true
+        },
+        component: {
+            required: true
         }
     },
     methods: {
-        alert() {
-            this.$ionic.alertController.create({
-                header: 'Hello!',
-                message: 'How are you?',
-                buttons: ['OK, thanks!'],
-            })
-            .then(a => a.present())
-        },
         modal() {
             this.$ionic.modalController.create({
                 component: MenuItem,

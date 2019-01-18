@@ -3,12 +3,11 @@ import Router    from 'vue-router';
 import Home      from './screens/Home.vue';
 import Login     from './screens/Login.vue';
 import Register  from './screens/Register.vue';
-import Menu      from './screens/Menu.vue';
+// import Menu      from './screens/Menu.vue';
 import Tabs      from './screens/Tabs.vue';
 import Cart      from './screens/Cart.vue';
 import Checkout  from './screens/Checkout.vue';
-
-import firebase from 'firebase';
+import Dashboard from './screens/Dashboard.vue';
 
 Vue.use(Router);
 
@@ -17,11 +16,7 @@ const router = new Router({
   routes: [
     { path: '*', redirect: '/login' },
     { path: '/', redirect: '/login' },
-    { path: '/tabs', 
-        name: 'tabs',
-        component: Tabs, 
-        meta: { requiresAuth: true},
-    },
+    { path: '/tabs', name: 'tabs', component: Tabs, meta: { requiresAuth: true} },
     { path: '/home', name: 'home', component: Home, meta: { requiresAuth: true } },
     { path: '/login', name: 'login', component: Login
       // I have no idea how viable webpack chunking is in a mobile environment
@@ -31,18 +26,20 @@ const router = new Router({
     //   component: () => import(/* webpackChunkName: "login" */ './screens/Login.vue'),
     },
     { path: '/register', name: 'register', component: Register },
-    { path: '/menu', name: 'menu', component: Menu, meta: { requiresAuth: true } },
+    // { path: '/menu', name: 'menu', component: Menu, meta: { requiresAuth: true } },
     { path: '/cart', name: 'cart', component: Cart },
-    { path: '/checkout', name: 'checkout', component: Checkout }
+    { path: '/checkout', name: 'checkout', component: Checkout },
+    { path: '/dashboard', name: 'dashboard', component: Dashboard }
   ],
 });
 
-router.beforeEach((to, from, next) => {
-    const currentUser = firebase.auth().currentUser;
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-    if (!currentUser && requiresAuth) next('login')
-    // else if (currentUser && !requiresAuth) next('tabs')
-    else next()
-});
+// Need to reconfigure guards(if even necessary in mobile environment, to use cpacitor stored token instead of firebase)
+// router.beforeEach((to, from, next) => {
+//     const currentUser = firebase.auth().currentUser;
+//     const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+//     if (!currentUser && requiresAuth) next('login')
+//     // else if (currentUser && !requiresAuth) next('tabs')
+//     else next()
+// });
 
 export default router;

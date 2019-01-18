@@ -1,26 +1,17 @@
 <template>
-    <div>
+    <div id="app">
         <ion-app>
             <router-view></router-view>
         </ion-app>
-        <ion-menu-controller></ion-menu-controller>
     </div>
 </template>
-
 <script>
-import OptionsMenu from './components/OptionsMenu.vue';
-
 export default {
     created() {
         console.log("IONIC", this.$ionic)
-        console.log("User", this.$user)
-    },
-    components: { 
-        'OptionsMenu' : OptionsMenu,
     },
 }
 </script>
-
 <style>
 :root {
     --ion-color-primary: #cf1e3a;
@@ -29,13 +20,11 @@ export default {
     --ion-color-light: #fff6ed;
     --ion-color-dark: #222222;
 }
-
+:host {
+    /* Look in to changing this. For some reason this selector defaults to 8px right and 16px left, offsetting all lists */
+    /* --padding-start: 8px !important; */
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Bitter', serif;
 }
 </style>
