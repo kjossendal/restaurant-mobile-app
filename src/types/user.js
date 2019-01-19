@@ -1,3 +1,4 @@
+// Need some verification on what a user record looks like on the backend
 function User(data) {
     Object.assign(this, User.template, data);
 }
@@ -22,4 +23,4 @@ Object.defineProperty(User, 'template', {
     }
 });
 
-export default User
+export default User;

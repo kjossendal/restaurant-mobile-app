@@ -8,8 +8,8 @@ export default {
                     this.$ionic.toastController.create({
                         message: toastMessage,
                         showCloseButton: true,
-                        position: 'bottom',
-                        closeButtonText: 'Done',
+                        position: 'top',
+                        closeButtonText: 'Close',
                     })
                     .then(t => t.present())
                 },

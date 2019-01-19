@@ -1,6 +1,3 @@
-import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins
-
 export default {
     namespaced: true,
     state: {

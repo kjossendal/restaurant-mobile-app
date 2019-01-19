@@ -1,4 +1,4 @@
-import auth from '@/libraries/auth.js'
+import auth from '@/libraries/auth.js';
 
 export default {
     install(Vue) {

@@ -19,7 +19,7 @@ const router = new Router({
     { path: '/tabs', name: 'tabs', component: Tabs, meta: { requiresAuth: true} },
     { path: '/home', name: 'home', component: Home, meta: { requiresAuth: true } },
     { path: '/login', name: 'login', component: Login
-      // I have no idea how viable webpack chunking is in a mobile environment
+      // I have no idea how viable webpack chunking is in a mobile environment.
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.

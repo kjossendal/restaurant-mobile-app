@@ -5,9 +5,6 @@
                 <img src="../assets/sfr-hero-logo.png" alt="logo" />
             </ion-row>
         </ion-grid>
-        <!-- <ion-text text-center>
-            <h2 class="title">Chicken D'élégance</h2>
-        </ion-text> -->
         <ion-grid>
             <ion-row justify-content-center>
                 <ion-col>
@@ -25,17 +22,18 @@
         <div text-center>
             <ion-button color="light" class="button" expand="block" @click="login">Login</ion-button>
             <ion-button color="light" class="button" expand="block" @click="register">Sign Up</ion-button>
-            <ion-button color="light" class="button" expand="block" @click="getObject({'key':'token'})">Get Object</ion-button>
+            <!-- for testing token storage -->
+            <!-- <ion-button color="light" class="button" expand="block" @click="getObject({'key':'token'})">Get Object</ion-button>
             <ion-button color="light" class="button" expand="block" @click="keys">Get keys</ion-button>
-            <ion-button color="light" class="button" expand="block" @click="clear">Clear</ion-button>
+            <ion-button color="light" class="button" expand="block" @click="clear">Clear</ion-button> -->
         </div>
     </ion-content>
 </template>
 <script>
 import { Plugins } from '@capacitor/core';
 import axios from 'axios';
-// import firebase from 'firebase';
-const { Storage } = Plugins
+
+const { Storage } = Plugins;
 
 export default {
     data() {
@@ -46,15 +44,15 @@ export default {
     },
     methods: {
         login() {
-            this.$showLoader()
+            this.$showLoader();
             this.$auth.login(this.email, this.password)
             .then(() => {
-                this.$hideLoader()
-                this.$router.replace('/tabs')
+                this.$hideLoader();
+                this.$router.replace('/tabs');
             })
             .catch(() => {
-                this.$hideLoader()
-                this.$alertError('Invalid Email/Password')
+                this.$hideLoader();
+                this.$alertError('Invalid Email/Password');
             })
             // can remove pending testing of $auth plugin
             // axios.post('api/login', { email: this.email, password: this.password })
@@ -87,7 +85,7 @@ export default {
             // })
         },
         register() {
-            this.$router.push('/register')
+            this.$router.push('/register');
         },
         // storage api methods, testing purposes
         async setObject(obj) {

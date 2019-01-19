@@ -1,7 +1,7 @@
-# Restaurant app built with Vue.js, Ionic 4(beta), and wrapped by Capacitor
+# Mobile app built with Vue.js, Ionic 4(beta), and wrapped by Capacitor
 
 ## Project setup
-<p>Requires proper Android Studio and Xcode configuration</p>
+<p>Requires proper Android Studio and Xcode configuration as well as Capacitor</p>
 
 ### Run in browser
 ```

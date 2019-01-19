@@ -85,7 +85,6 @@ import { Plugins, CameraResultType, FilesystemDirectory, FilesystemEncoding } fr
 
 import IngredientsSlider from '../components/IngredientsSlider.vue';
 
-import firebase from 'firebase';
 
 const { Keyboard, Camera, Browser, Filesystem } = Plugins;
 
@@ -97,9 +96,6 @@ export default {
         }
     },
     methods: {
-        logout() {
-            firebase.auth().signOut().then(() => this.$router.replace('/login'))
-        },
         viewIngredientGroup(slideIndex) {
             this.$ionic.modalController.create({
                 component: IngredientsSlider,
@@ -135,8 +131,6 @@ export default {
             try {
                 Filesystem.writeFile({
                 path: 'secrets/text.txt',
-                data: "This is a test",
-                directory: FilesystemDirectory.Documents,
                 encoding: FilesystemEncoding.UTF8
                 })
             } catch(e) {

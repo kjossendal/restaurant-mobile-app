@@ -1,7 +1,8 @@
+// TODO no async allowed in computed functions
 import { Plugins } from '@capacitor/core';
-const { Storage } = Plugins
+const { Storage } = Plugins;
 
-import store from '../store/index.js'
+import store from '../store/index.js';
 
 export default {
     install(Vue) {
@@ -10,19 +11,17 @@ export default {
                 "$user"() {
                     var user = store.getters['user/user'];
                     user.setEmail = function(userEmail) {
-                        return store.dispatch('user/setEmail', userEmail)
+                        return store.dispatch('user/setEmail', userEmail);
                     };
                     user.setUser = function(newUser) {
-                        return store.dispatch('user/setUser', newUser)
+                        return store.dispatch('user/setUser', newUser);
                     };
                     user.setToken = function(newTokenSet) {
-                        return store.dispatch('user/setToken', newTokenSet)
+                        return store.dispatch('user/setToken', newTokenSet);
                     };
                     user.getToken = async function() {
-                        const t = await Storage.get({key: 'token'})
-                        return JSON.parse(t.value)
-                        // const user = await Storage.get(obj)
-                        // return store.getters['user/token'];
+                        const t = await Storage.get({key: 'token'});
+                        return JSON.parse(t.value);
                     };
                     return user;
                 }
